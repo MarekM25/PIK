@@ -26,4 +26,12 @@ public class DatabaseManagerApplicationTests {
 		String actual = homeController.home();
 		assertEquals("HomeController niepoprawna wartość",expected, actual);
 	}
+
+	@Test
+	public void helloBadTest() {
+		HomeController homeController = new HomeController();
+		String expected = "IncorrectTextHere";
+		String actual = homeController.home();
+		assertEquals("HomeController niepoprawny testowy test",expected, actual);
+	}
 }
