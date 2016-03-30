@@ -1,7 +1,7 @@
 package com.databasemanager;
 
-import com.databasemanager.configuration.DatabaseManagerApplication;
-import com.databasemanager.controller.HomeController;
+import com.databasemanager.web.Application;
+import com.databasemanager.web.controller.HomeController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = DatabaseManagerApplication.class)
+@SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 public class DatabaseManagerApplicationTests {
 
