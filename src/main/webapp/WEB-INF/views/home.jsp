@@ -6,6 +6,6 @@
     <title>Home Page</title>
 </head>
 <body>
-Hello World test In Progresss222#!
+Hello World Master build test!
 </body>
 </html>
