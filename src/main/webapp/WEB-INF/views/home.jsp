@@ -7,5 +7,6 @@
 </head>
 <body>
 Hello World Master build test!
+Feature branch test
 </body>
 </html>
