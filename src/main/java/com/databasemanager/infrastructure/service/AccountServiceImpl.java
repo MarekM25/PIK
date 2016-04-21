@@ -9,6 +9,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,7 +33,9 @@ public class AccountServiceImpl implements AccountService {
     public Account createAccount() {
         Account account = new Account();
         account.setUsername("user");
-        account.setPassword("password");
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode("password");
+        account.setPassword(hashedPassword);
         account.setEmail("trololo@stud.elka.pw.edu.pl");
         return account;
     }
