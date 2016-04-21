@@ -7,8 +7,9 @@ public class AccountServiceImpl implements AccountService {
 
     public Account getAccountByUsername(String username) {
         Account account = new Account();
-        account.Username = username;
-        account.Password = "Dupa1";
+        account.setUsername(username);
+        account.setEmail("trolololo@stud.elka.pw.edu.pl");
+        account.setPassword("Dupa1");
         return account;
     }
 }
