@@ -33,4 +33,11 @@ public class AccountController {
         accountService.saveAccount(account);
         return "account/create";
     }
+
+    @RequestMapping("/create-default")
+    public String createDefaultAccount() {
+        Account account = accountService.createAccount();
+        accountService.saveAccount(account);
+        return "account/create";
+    }
 }
