@@ -1,5 +1,6 @@
-<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,24 +10,7 @@
     <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Database Manager</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/Account/Register" id="registerLink">Register</a></li>
-            </ul>
-
-        </div>
-    </div>
-</div>
+<%@include file="/WEB-INF/layout/navbar.jspx" %>
 <div class="container body-content">
 
 
@@ -91,10 +75,7 @@
     </div>
 
 
-    <hr />
-    <footer>
-        <p>&copy; 2016 - Marek Moraczyński, Alexis Nowikowski, Kacper Staniszewski, Paweł Wiszenko</p>
-    </footer>
+    <%@include file="/WEB-INF/layout/footer.jspx" %>
 </div>
 <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
