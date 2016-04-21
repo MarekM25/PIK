@@ -29,8 +29,6 @@ public class AccountController {
 
     @RequestMapping("/create")
     public String create() {
-        Account account = accountService.createAccount();
-        accountService.saveAccount(account);
         return "account/create";
     }
 
