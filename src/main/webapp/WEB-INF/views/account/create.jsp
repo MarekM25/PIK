@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>Rejestracja</title>
@@ -10,34 +13,37 @@
 <div class="container body-content">
     <h2>Rejestracja</h2>
 
-    <form action="/Account/Register" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="km7vvcX3vxFU5KvBJCISgYjKfVnHbfKov1YWm0-PgkNOEV1829F97noqL5aHx1bVCUasaWLXCDk1LNd-ltPxUX5Cw_oHaGJkAG8VpP5iZu01" />
+    <form:form action="/account/create" modelAttribute="accountDTO" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="km7vvcX3vxFU5KvBJCISgYjKfVnHbfKov1YWm0-PgkNOEV1829F97noqL5aHx1bVCUasaWLXCDk1LNd-ltPxUX5Cw_oHaGJkAG8VpP5iZu01" />
         <h4>Utwórz nowe konto.</h4>
         <hr />
         <div class="validation-summary-valid text-danger" data-valmsg-summary="true"><ul><li style="display:none"></li>
         </ul></div>    <div class="form-group">
-            <label class="col-md-2 control-label" for="Email">Login</label>
+            <label class="col-md-2 control-label" for="username">Login</label>
             <div class="col-md-5">
-                <input class="form-control" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="username" name="username" type="text" value="" />
+                <form:input class="form-control" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="username" name="username" path="username" type="text" value="" />
+                <form:errors path="username" cssClass="text-danger"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-2 control-label" for="Password">Hasło</label>
+            <label class="col-md-2 control-label" for="password">Hasło</label>
             <div class="col-md-5">
-                <input class="form-control" data-val="true" data-val-length="The Password must be at least 6 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="Password" name="Password" type="password" />
+                <form:input class="form-control" data-val="true" data-val-length="The Password must be at least 6 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="password" name="password" path="password" type="password" />
+                <form:errors path="password" cssClass="text-danger"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-md-2 control-label" for="ConfirmPassword">Potwierdź hasło</label>
+            <label class="col-md-2 control-label" for="matchingPassword">Potwierdź hasło</label>
             <div class="col-md-5">
-                <input class="form-control" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password" />
+                <form:input class="form-control" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="matchingPassword" name="matchingPassword" path="matchingPassword" type="password" />
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                <form:errors path="*" cssClass="alert alert-danger" element="div"/>
                 <input type="submit" class="btn btn-default" value="Zarejestruj" />
             </div>
         </div>
-    </form>
+    </form:form>
 
     <%@include file="/WEB-INF/layout/footer.jspx" %>
 </div>

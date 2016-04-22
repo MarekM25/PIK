@@ -1,6 +1,7 @@
 package com.databasemanager.infrastructure.service;
 
 import com.databasemanager.domain.model.Account;
+import com.databasemanager.domain.model.AccountDTO;
 import com.databasemanager.domain.repository.AccountRepository;
 import com.databasemanager.domain.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +31,17 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account createAccount() {
+    public boolean isUsernameAvailable(String username) {
+        return accountRepository.findByUsername(username) == null;
+    }
+
+    @Override
+    public Account createAccount(AccountDTO accountDTO) {
         Account account = new Account();
-        account.setUsername("user");
+        account.setUsername(accountDTO.getUsername());
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode("password");
+        String hashedPassword = passwordEncoder.encode(accountDTO.getPassword());
         account.setPassword(hashedPassword);
-        account.setEmail("trololo@stud.elka.pw.edu.pl");
         return account;
     }
 
