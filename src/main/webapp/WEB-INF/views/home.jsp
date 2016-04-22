@@ -4,10 +4,12 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Home Page</title>
+    <title>Database Manager</title>
 
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
+
+    <link rel='stylesheet' href='styles/styles.css'>
 </head>
 <body>
 <%@include file="/WEB-INF/layout/navbar.jspx" %>
@@ -15,21 +17,22 @@
 
 
 
-    <h2>Log in.</h2>
+    <h2>Logowanie</h2>
     <div class="row">
         <div class="col-md-8">
             <section id="loginForm">
-                <form action="/Account/Login" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="_FROmWy3AgKzHUPqWjFErWN3rkFwiKX2FXe6nhxyefL1P2Tr_AoIQVSTDkxpHnh1VUL5YUZanwwIYJvyOBAk23tVAv4JcW5GUcwPLbw4nlo1" />                <h4>Use a local account to log in.</h4>
+                <form action="/Account/Login" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="_FROmWy3AgKzHUPqWjFErWN3rkFwiKX2FXe6nhxyefL1P2Tr_AoIQVSTDkxpHnh1VUL5YUZanwwIYJvyOBAk23tVAv4JcW5GUcwPLbw4nlo1" />
+                    <h4>Podaj login i hasło.</h4>
                     <hr />
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="Email">Email</label>
+                        <label class="col-md-2 control-label" for="Email">Login</label>
                         <div class="col-md-5">
-                            <input class="form-control" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="Email" name="Email" type="text" value="" />
+                            <input class="form-control" data-val="true" id="username" name="username" type="text" value="" />
                             <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="Password">Password</label>
+                        <label class="col-md-2 control-label" for="Password">Hasło</label>
                         <div class="col-md-5">
                             <input class="form-control" data-val="true" data-val-required="The Password field is required." id="Password" name="Password" type="password" />
                             <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
@@ -39,17 +42,17 @@
                         <div class="col-md-offset-2 col-md-10">
                             <div class="checkbox">
                                 <input data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" type="checkbox" value="true" /><input name="RememberMe" type="hidden" value="false" />
-                                <label for="RememberMe">Remember me?</label>
+                                <label for="RememberMe">Pamiętaj mnie</label>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Log in" class="btn btn-default" />
+                            <input type="submit" value="Zaloguj" class="btn btn-default" />
                         </div>
                     </div>
                     <p>
-                        <a href="/Account/Register">Register as a new user</a>
+                        <a href="/account/create">Zarejestruj jako nowy użytkownik</a>
                     </p>
                 </form>        </section>
         </div>
