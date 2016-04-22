@@ -19,12 +19,23 @@ public class AccountController {
 
     @RequestMapping("/login")
     public String login() {
-        Account account = this.accountService.getAccountByUsername("User1");
         return "account/login";
+    }
+
+    @RequestMapping("/welcome")
+    public String afterSuccessfulLogin() {
+        return "account/welcome";
     }
 
     @RequestMapping("/create")
     public String create() {
+        return "account/create";
+    }
+
+    @RequestMapping("/create-default")
+    public String createDefaultAccount() {
+        Account account = accountService.createAccount();
+        accountService.saveAccount(account);
         return "account/create";
     }
 }
