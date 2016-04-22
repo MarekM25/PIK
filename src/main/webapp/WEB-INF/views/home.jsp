@@ -21,21 +21,22 @@
     <div class="row">
         <div class="col-md-8">
             <section id="loginForm">
-                <form action="/Account/Login" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="_FROmWy3AgKzHUPqWjFErWN3rkFwiKX2FXe6nhxyefL1P2Tr_AoIQVSTDkxpHnh1VUL5YUZanwwIYJvyOBAk23tVAv4JcW5GUcwPLbw4nlo1" />
+                <form action="/" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="_FROmWy3AgKzHUPqWjFErWN3rkFwiKX2FXe6nhxyefL1P2Tr_AoIQVSTDkxpHnh1VUL5YUZanwwIYJvyOBAk23tVAv4JcW5GUcwPLbw4nlo1" />
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <h4>Podaj login i hasło.</h4>
                     <hr />
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="Email">Login</label>
+                        <label class="col-md-2 control-label" for="username">Login</label>
                         <div class="col-md-5">
                             <input class="form-control" data-val="true" id="username" name="username" type="text" value="" />
-                            <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                            <span class="field-validation-valid text-danger" data-valmsg-for="username" data-valmsg-replace="true"></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-2 control-label" for="Password">Hasło</label>
+                        <label class="col-md-2 control-label" for="password">Hasło</label>
                         <div class="col-md-5">
-                            <input class="form-control" data-val="true" data-val-required="The Password field is required." id="Password" name="Password" type="password" />
-                            <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                            <input class="form-control" data-val="true" data-val-required="The Password field is required." id="password" name="password" type="password" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="password" data-valmsg-replace="true"></span>
                         </div>
                     </div>
                     <div class="form-group">

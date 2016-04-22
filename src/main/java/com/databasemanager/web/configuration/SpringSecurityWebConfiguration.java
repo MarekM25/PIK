@@ -17,12 +17,12 @@ public class SpringSecurityWebConfiguration extends WebSecurityConfigurerAdapter
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
-                    .loginPage("/account/login")
+                    .loginPage("/")
                     .defaultSuccessUrl("/account/welcome",true)
                     .permitAll()
                     .and()
                 .logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/account/logout"))
-                    .logoutSuccessUrl("/login?logout");
+                    .logoutSuccessUrl("/?logout");
     }
 }
