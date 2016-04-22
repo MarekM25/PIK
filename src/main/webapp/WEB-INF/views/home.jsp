@@ -1,5 +1,7 @@
 
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,14 +43,6 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <div class="checkbox">
-                                <input data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" type="checkbox" value="true" /><input name="RememberMe" type="hidden" value="false" />
-                                <label for="RememberMe">Pamiętaj mnie</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
                             <input type="submit" value="Zaloguj" class="btn btn-default" />
                         </div>
                     </div>
@@ -77,6 +71,16 @@
             </section>
         </div>
     </div>
+    <c:if test="${param.error ne null}">
+        <div>
+            <p style="color:red">Niepoprawny login i hasło.</p>
+        </div>
+    </c:if>
+    <c:if test="${param.logout ne null}">
+        <div>
+            <p style="color:red">Zostałeś wylogowany.</p>
+        </div>
+    </c:if>
 
 
     <%@include file="/WEB-INF/layout/footer.jspx" %>
