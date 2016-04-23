@@ -54,7 +54,7 @@
         <div class="col-md-4">
             <section id="socialLoginForm">
 
-                <h4>Za2rządzaj swoimi bazami danych!</h4>
+                <h4>Za1rządzaj swoimi bazami danych!</h4>
                 <hr />
                 <div style="display: block; margin: 20px">
                     <p>
