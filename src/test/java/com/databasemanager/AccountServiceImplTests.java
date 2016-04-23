@@ -42,8 +42,8 @@ public class AccountServiceImplTests {
 
         Mockito.when(this.accountRepository.findByUsername("testuser")).thenReturn(account);
 
-        Assert.assertFalse(this.accountService.isUsernameAvailable("testuser"));
-        Assert.assertFalse(this.accountService.isUsernameAvailable("TestUser"));
-        Assert.assertTrue(this.accountService.isUsernameAvailable("testuser2"));
+        Assert.assertFalse("User with given username already exists.", this.accountService.isUsernameAvailable("testuser"));
+        Assert.assertFalse("User with given username already exists (case insensitive comparison).", this.accountService.isUsernameAvailable("TestUser"));
+        Assert.assertTrue("User with given username does not already exist.", this.accountService.isUsernameAvailable("testuser2"));
     }
 }
