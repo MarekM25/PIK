@@ -61,10 +61,10 @@
                         Dzięki DatabaseManager zarządzanie silnikami różnych baz danych nigdy nie było prostsze. Używaj narzędzia już dziś za darmo!.
                     </p>
                     </br>
-                    <img src="/images/postgres.png" width="75"/>
-                    <img src="/images/oracle.png" width="75"/>
-                    <img src="/images/sql_server.png" width="75"/>
-                    <img src="/images/mysql.png" width="75"/>
+                    <img src="images/postgres.png" width="75"/>
+                    <img src="images/oracle.png" width="75"/>
+                    <img src="images/sql_server.png" width="75"/>
+                    <img src="images/mysql.png" width="75"/>
                 </div>
 
 
