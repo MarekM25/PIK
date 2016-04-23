@@ -11,7 +11,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
 
-    <link rel='stylesheet' href='/styles/styles.css'>
+    <link rel='stylesheet' href='styles/styles.css'>
 </head>
 <body>
 <%@include file="/WEB-INF/layout/navbar.jspx" %>
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <p>
-                        <a href="/account/create">Zarejestruj jako nowy użytkownik</a>
+                        <a href="account/create">Zarejestruj jako nowy użytkownik</a>
                     </p>
                 </form>        </section>
         </div>

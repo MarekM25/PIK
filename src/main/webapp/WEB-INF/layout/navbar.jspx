@@ -9,11 +9,11 @@
     <div class="container">
         <div class="navbar-header" >
 
-            <a class="navbar-brand" style="color:white;" href="/">Database Manager</a>
+            <a class="navbar-brand" style="color:white;" href="">Database Manager</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/account/create" style="color:white;"  id="registerLink">Zarejestruj</a></li>
+                <li><a href="account/create" style="color:white;"  id="registerLink">Zarejestruj</a></li>
             </ul>
 
         </div>
