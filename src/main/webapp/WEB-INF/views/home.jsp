@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col-md-8">
             <section id="loginForm">
-                <form action="/" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="_FROmWy3AgKzHUPqWjFErWN3rkFwiKX2FXe6nhxyefL1P2Tr_AoIQVSTDkxpHnh1VUL5YUZanwwIYJvyOBAk23tVAv4JcW5GUcwPLbw4nlo1" />
+                <form action="" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="_FROmWy3AgKzHUPqWjFErWN3rkFwiKX2FXe6nhxyefL1P2Tr_AoIQVSTDkxpHnh1VUL5YUZanwwIYJvyOBAk23tVAv4JcW5GUcwPLbw4nlo1" />
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <h4>Podaj login i hasło.</h4>
                     <hr />

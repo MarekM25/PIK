@@ -13,7 +13,7 @@
 <div class="container body-content">
     <h2>Rejestracja</h2>
 
-    <form:form action="/account/create" modelAttribute="accountDTO" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="km7vvcX3vxFU5KvBJCISgYjKfVnHbfKov1YWm0-PgkNOEV1829F97noqL5aHx1bVCUasaWLXCDk1LNd-ltPxUX5Cw_oHaGJkAG8VpP5iZu01" />
+    <form:form action="account/create" modelAttribute="accountDTO" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="km7vvcX3vxFU5KvBJCISgYjKfVnHbfKov1YWm0-PgkNOEV1829F97noqL5aHx1bVCUasaWLXCDk1LNd-ltPxUX5Cw_oHaGJkAG8VpP5iZu01" />
         <h4>Utwórz nowe konto.</h4>
         <hr />
         <div class="validation-summary-valid text-danger" data-valmsg-summary="true"><ul><li style="display:none"></li>
