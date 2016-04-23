@@ -1,9 +1,8 @@
-package com.databasemanager.infrastructure.service;
+package com.databasemanager.domain.service;
 
-import com.databasemanager.domain.model.Account;
-import com.databasemanager.domain.model.AccountDTO;
+import com.databasemanager.domain.entity.AccountEntity;
+import com.databasemanager.domain.model.AccountModel;
 import com.databasemanager.domain.repository.AccountRepository;
-import com.databasemanager.domain.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -26,8 +25,8 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account saveAccount(Account account) {
-        return accountRepository.save(account);
+    public AccountEntity saveAccount(AccountEntity accountEntity) {
+        return accountRepository.save(accountEntity);
     }
 
     @Override
@@ -36,18 +35,18 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Account createAccount(AccountDTO accountDTO) {
-        Account account = new Account();
-        account.setUsername(accountDTO.getUsername());
+    public AccountEntity createAccount(AccountModel accountModel) {
+        AccountEntity accountEntity = new AccountEntity();
+        accountEntity.setUsername(accountModel.getUsername());
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode(accountDTO.getPassword());
-        account.setPassword(hashedPassword);
-        return account;
+        String hashedPassword = passwordEncoder.encode(accountModel.getPassword());
+        accountEntity.setPassword(hashedPassword);
+        return accountEntity;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account = accountRepository.findByUsername(username);
+        AccountEntity accountEntity = accountRepository.findByUsername(username);
         if (username == null) {
             return null;
         }
@@ -55,7 +54,7 @@ public class AccountServiceImpl implements AccountService {
         if (username.equals("admin")) {
             auth = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN");
         }
-        String password = account.getPassword();
+        String password = accountEntity.getPassword();
         return new User(username, password, auth);
     }
 }

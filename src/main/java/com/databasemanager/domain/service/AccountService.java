@@ -1,13 +1,13 @@
 package com.databasemanager.domain.service;
 
-import com.databasemanager.domain.model.Account;
-import com.databasemanager.domain.model.AccountDTO;
+import com.databasemanager.domain.entity.AccountEntity;
+import com.databasemanager.domain.model.AccountModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface AccountService extends UserDetailsService {
-    Account saveAccount(Account account);
+    AccountEntity saveAccount(AccountEntity accountEntity);
 
     boolean isUsernameAvailable(String username);
 
-    Account createAccount(AccountDTO accountDTO);
+    AccountEntity createAccount(AccountModel accountModel);
 }
