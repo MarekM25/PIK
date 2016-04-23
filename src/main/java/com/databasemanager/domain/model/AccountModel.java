@@ -7,7 +7,7 @@ import com.databasemanager.domain.validator.UsernameAvailable;
 import javax.validation.constraints.Size;
 
 @PasswordMatches
-public class AccountDTO {
+public class AccountModel {
     @Size(min = 5, max = 25, message = "Login musi mieć co najmniej 5 i co najwyżej 25 znaków.")
     @UsernameAvailable
     private String username;

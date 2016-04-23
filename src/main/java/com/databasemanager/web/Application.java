@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages = "com.databasemanager")
 @EnableJpaRepositories(basePackages = "com.databasemanager")
-@EntityScan(basePackages = "com.databasemanager.domain.model")
+@EntityScan(basePackages = "com.databasemanager.domain.entity")
 public class Application {
 
     public static void main(String[] args) {

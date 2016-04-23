@@ -1,10 +1,10 @@
-package com.databasemanager.domain.model;
+package com.databasemanager.domain.entity;
 
 
 import javax.persistence.*;
 
 @Entity
-public class Account {
+public class AccountEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

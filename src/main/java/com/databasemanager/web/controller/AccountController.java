@@ -1,11 +1,10 @@
 package com.databasemanager.web.controller;
 
-import com.databasemanager.domain.model.Account;
-import com.databasemanager.domain.model.AccountDTO;
+import com.databasemanager.domain.entity.AccountEntity;
+import com.databasemanager.domain.model.AccountModel;
 import com.databasemanager.domain.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,17 +29,17 @@ public class AccountController {
     }
 
     @RequestMapping(value="/create", method= RequestMethod.GET)
-    public String registerAccount(@ModelAttribute AccountDTO accountDTO) {
+    public String registerAccount(@ModelAttribute AccountModel accountModel) {
         return "account/create";
     }
 
     @RequestMapping(value="/create", method= RequestMethod.POST)
-    public String processRegisterNewAccountForm(@ModelAttribute @Valid AccountDTO accountDTO, BindingResult result){
+    public String processRegisterNewAccountForm(@ModelAttribute @Valid AccountModel accountModel, BindingResult result){
         if(result.hasErrors()){
             return "account/create";
         }
-        Account account=accountService.createAccount(accountDTO);
-        accountService.saveAccount(account);
+        AccountEntity accountEntity =accountService.createAccount(accountModel);
+        accountService.saveAccount(accountEntity);
         return "home";
     }
 }
