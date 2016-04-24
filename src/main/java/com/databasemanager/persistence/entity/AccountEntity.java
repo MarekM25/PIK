@@ -1,4 +1,4 @@
-package com.databasemanager.domain.entity;
+package com.databasemanager.persistence.entity;
 
 
 import javax.persistence.*;

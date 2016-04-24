@@ -28,8 +28,12 @@ public class AccountModel {
     }
 
     public void setPassword(String password) {
+        //TODO Store password hashed
+        //TODO Something like this.hashedPassword = HashService(password)
         this.password = password;
     }
+
+    //TODO Add checkPassword method
 
     public String getMatchingPassword() {
         return matchingPassword;

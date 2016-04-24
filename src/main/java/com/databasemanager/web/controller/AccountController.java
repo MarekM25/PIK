@@ -1,6 +1,6 @@
 package com.databasemanager.web.controller;
 
-import com.databasemanager.domain.entity.AccountEntity;
+import com.databasemanager.persistence.entity.AccountEntity;
 import com.databasemanager.domain.model.AccountModel;
 import com.databasemanager.domain.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +38,8 @@ public class AccountController {
         if(result.hasErrors()){
             return "account/create";
         }
-        AccountEntity accountEntity =accountService.createAccount(accountModel);
-        accountService.saveAccount(accountEntity);
+
+        accountService.saveAccount(accountModel);
         return "home";
     }
 }
