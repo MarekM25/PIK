@@ -12,7 +12,7 @@
 <%@include file="/WEB-INF/layout/navbar.jspx" %>
 <div class="container body-content">
     <h2>Rejestracja</h2>
-    <form:form action="${spring:mvcUrl('AC#processRegisterNewAccountForm').build()}" modelAttribute="accountDTO" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden"/>
+    <form:form action="${spring:mvcUrl('AC#accountCreate').build()}" modelAttribute="accountDTO" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden"/>
         <h4>Utwórz nowe konto.</h4>
         <hr />
         <div class="validation-summary-valid text-danger" data-valmsg-summary="true"><ul><li style="display:none"></li>

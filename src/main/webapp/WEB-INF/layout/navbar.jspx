@@ -14,7 +14,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="${spring:mvcUrl('AC#processRegisterNewAccountForm').build()}" style="color:white;"  id="registerLink">Zarejestruj</a></li>
+                <li><a href="${spring:mvcUrl('AC#accountCreate').build()}" style="color:white;"  id="registerLink">Zarejestruj</a></li>
             </ul>
 
         </div>

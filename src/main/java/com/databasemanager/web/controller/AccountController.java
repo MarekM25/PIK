@@ -9,32 +9,28 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/account")
-public class AccountController {
-
-    private final AccountService accountService;
-
+public class AccountController extends ControllerBase {
     @Autowired
-    public AccountController(AccountService accountService) {
-        this.accountService = accountService;
-    }
+    private AccountService accountService;
 
-    @RequestMapping("/welcome")
+    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String afterSuccessfulLogin() {
         return "account/welcome";
     }
 
-    @RequestMapping(value="/create", method= RequestMethod.GET)
-    public String registerAccount(@ModelAttribute AccountDTO accountDTO) {
-        return "account/create";
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public String accountCreate(@ModelAttribute AccountDTO accountDTO) {
+        return "/account/create";
     }
 
-    @RequestMapping(value="/create", method= RequestMethod.POST)
-    public String processRegisterNewAccountForm(@ModelAttribute @Valid AccountDTO accountDTO, BindingResult result){
-        if(result.hasErrors()){
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String accountCreatePost(@ModelAttribute @Valid AccountDTO accountDTO, BindingResult result) {
+        if(result.hasErrors()) {
             return "/account/create";
         }
 
