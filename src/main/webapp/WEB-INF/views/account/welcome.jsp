@@ -6,6 +6,7 @@
     <title>WELCOME</title>
 </head>
 <body>
+<!--TODO Change account/logout -->
 <form action="account/logout" method="post">
     <input type="submit" value="Wyloguj"/>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
