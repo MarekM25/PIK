@@ -1,4 +1,3 @@
-
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -23,7 +22,7 @@
     <div class="row">
         <div class="col-md-8">
             <section id="loginForm">
-                <form action="" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" value="_FROmWy3AgKzHUPqWjFErWN3rkFwiKX2FXe6nhxyefL1P2Tr_AoIQVSTDkxpHnh1VUL5YUZanwwIYJvyOBAk23tVAv4JcW5GUcwPLbw4nlo1" />
+                <form action="" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden" />
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <h4>Podaj login i hasło.</h4>
                     <hr />
@@ -31,14 +30,12 @@
                         <label class="col-md-2 control-label" for="username">Login</label>
                         <div class="col-md-5">
                             <input class="form-control" data-val="true" id="username" name="username" type="text" value="" />
-                            <span class="field-validation-valid text-danger" data-valmsg-for="username" data-valmsg-replace="true"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="password">Hasło</label>
                         <div class="col-md-5">
                             <input class="form-control" data-val="true" data-val-required="The Password field is required." id="password" name="password" type="password" />
-                            <span class="field-validation-valid text-danger" data-valmsg-for="password" data-valmsg-replace="true"></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -47,7 +44,7 @@
                         </div>
                     </div>
                     <p>
-                        <a href="account/create">Zarejestruj jako nowy użytkownik</a>
+                        <a href="${spring:mvcUrl('AC#processRegisterNewAccountForm').build()}">Zarejestruj jako nowy użytkownik</a>
                     </p>
                 </form>        </section>
         </div>
@@ -61,13 +58,11 @@
                         Dzięki DatabaseManager zarządzanie silnikami różnych baz danych nigdy nie było prostsze. Używaj narzędzia już dziś za darmo!.
                     </p>
                     </br>
-                    <img src="images/postgres.png" width="75"/>
-                    <img src="images/oracle.png" width="75"/>
-                    <img src="images/sql_server.png" width="75"/>
-                    <img src="images/mysql.png" width="75"/>
+                    <img src="<spring:url value="images/postgres.png"/>" width="75"/>
+                    <img src="<spring:url value="images/oracle.png"/>" width="75"/>
+                    <img src="<spring:url value="images/sql_server.png"/>" width="75"/>
+                    <img src="<spring:url value="images/mysql.png"/>" width="75"/>
                 </div>
-
-
             </section>
         </div>
     </div>

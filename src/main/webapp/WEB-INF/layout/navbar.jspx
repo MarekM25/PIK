@@ -5,7 +5,8 @@
   Time: 21:29
   To change this template use File | Settings | File Templates.
 -->
-<div class="navbar navbar-inverse navbar-fixed-top">
+
+<div class="navbar navbar-inverse navbar-fixed-top" xmlns:spring="http://www.springframework.org/tags">
     <div class="container">
         <div class="navbar-header" >
 
@@ -13,7 +14,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="account/create" style="color:white;"  id="registerLink">Zarejestruj</a></li>
+                <li><a href="${spring:mvcUrl('AC#processRegisterNewAccountForm').build()}" style="color:white;"  id="registerLink">Zarejestruj</a></li>
             </ul>
 
         </div>
