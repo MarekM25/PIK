@@ -1,7 +1,7 @@
 package com.databasemanager.domain.service;
 
-import com.databasemanager.persistence.entity.AccountEntity;
-import com.databasemanager.domain.model.AccountModel;
+import com.databasemanager.domain.dto.AccountDTO;
+import com.databasemanager.domain.model.Account;
 import com.databasemanager.domain.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,25 +10,28 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-public class AccountServiceImpl implements AccountService {
+public class AccountServiceImpl extends EntityServiceBase<Account, AccountDTO> implements AccountService {
 
     private AccountRepository accountRepository;
 
+    private PasswordEncoder passwordEncoder;
+
     @Autowired
     public AccountServiceImpl(AccountRepository accountRepository) {
+        super(Account.class, AccountDTO.class);
         this.accountRepository = accountRepository;
+        this.passwordEncoder = new BCryptPasswordEncoder();
     }
 
-    @Override
-    @Transactional
-    public AccountModel saveAccount(AccountModel accountModel) {
-        return accountRepository.save(accountModel);
+    public PasswordEncoder getPasswordEncoder() {
+        return this.passwordEncoder;
     }
 
     @Override
@@ -37,26 +40,37 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountModel createAccount(AccountModel accountModel) {
-        /*AccountEntity acc = new AccountEntity();
-        accountEntity.setUsername(accountModel.getUsername());
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String hashedPassword = passwordEncoder.encode(accountModel.getPassword());
-        accountEntity.setPassword(hashedPassword);*/
-        return accountModel;
+    @Transactional
+    public AccountDTO createAccount(AccountDTO accountDTO) {
+        //TODO Check if can add account (for example check if username is available)
+        Account account = this.convertToEntity(accountDTO);
+        account = accountRepository.save(account);
+        return this.convertToDTO(account);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AccountModel accountModel = accountRepository.findByUsername(username);
-        if (username == null) {
+        Account account = accountRepository.findByUsername(username);
+        if (account == null) {
             return null;
         }
+
         List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
-        if (username.equals("admin")) {
+        /*if (username.equals("admin")) {
             auth = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN");
-        }
-        String password = accountModel.getPassword();
-        return new User(username, password, auth);
+        }*/
+
+        return new User(username, account.getPasswordHash(), auth);
+    }
+
+    private String HashPassword(String plaintextPassword) {
+        return this.passwordEncoder.encode(plaintextPassword);
+    }
+
+    @Override
+    protected Account convertToEntity(AccountDTO accountDTO) {
+        Account account = super.convertToEntity(accountDTO);
+        account.setPasswordHash(this.HashPassword(accountDTO.getPassword()));
+        return account;
     }
 }

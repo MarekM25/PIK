@@ -1,10 +1,10 @@
-package com.databasemanager.persistence.entity;
+package com.databasemanager.domain.model;
 
 
 import javax.persistence.*;
 
 @Entity
-public class AccountEntity {
+public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +12,7 @@ public class AccountEntity {
     @Column(nullable = false, unique = true)
     private String username;
     @Column(nullable = false)
-    private String password;
+    private String passwordHash;
 
     public long getId() {
         return id;
@@ -30,11 +30,11 @@ public class AccountEntity {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswordHash() {
+        return passwordHash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 }

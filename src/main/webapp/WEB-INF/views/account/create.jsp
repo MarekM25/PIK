@@ -19,23 +19,26 @@
         </ul></div>    <div class="form-group">
             <label class="col-md-2 control-label" for="username">Login</label>
             <div class="col-md-5">
-                <form:input class="form-control" id="username" name="username" path="username" type="text" value="" />
+                <form:input class="form-control" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." id="username" name="username" path="username" type="text" value="" />
+                <form:errors path="username" cssClass="text-danger"/>
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label" for="password">Hasło</label>
             <div class="col-md-5">
-                <form:input class="form-control" id="password" name="password" path="password" type="password" />
+                <form:input class="form-control" data-val="true" data-val-length="The Password must be at least 6 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="password" name="password" path="password" type="password" />
+                <form:errors path="password" cssClass="text-danger"/>
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label" for="matchingPassword">Potwierdź hasło</label>
             <div class="col-md-5">
-                <form:input class="form-control" id="matchingPassword" name="matchingPassword" path="matchingPassword" type="password" />
+                <form:input class="form-control" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="matchingPassword" name="matchingPassword" path="matchingPassword" type="password" />
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                <form:errors path="*" cssClass="alert alert-danger" element="div"/>
                 <input type="submit" class="btn btn-default" value="Zarejestruj" />
             </div>
         </div>
