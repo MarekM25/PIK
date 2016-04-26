@@ -36,4 +36,14 @@ public class AccountDTO {
     public void setMatchingPassword(String matchingPassword) {
         this.matchingPassword = matchingPassword;
     }
+
+    @Override
+    public boolean equals(Object other){
+        if (other == null) return false;
+        if (other == this) return true;
+        if (!(other instanceof AccountDTO))return false;
+        AccountDTO otherAccount= (AccountDTO) other;
+
+        return (this.username.equals(otherAccount.getUsername()) && !this.password.equals(otherAccount.getPassword()));
+    }
 }
