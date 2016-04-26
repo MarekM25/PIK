@@ -34,6 +34,7 @@
             <label class="col-md-2 control-label" for="matchingPassword">Potwierdź hasło</label>
             <div class="col-md-5">
                 <form:input class="form-control" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="matchingPassword" name="matchingPassword" path="matchingPassword" type="password" />
+                <form:errors object-error="accountDTO" cssClass="text-danger"/>
             </div>
         </div>
         <div class="form-group">
