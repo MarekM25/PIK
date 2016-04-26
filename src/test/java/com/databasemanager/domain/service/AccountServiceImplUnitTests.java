@@ -106,6 +106,5 @@ public class AccountServiceImplUnitTests {
 
     @Test
     public void testConvertToEntity() {
-
     }
 }
