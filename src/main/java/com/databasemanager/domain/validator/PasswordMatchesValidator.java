@@ -1,6 +1,6 @@
 package com.databasemanager.domain.validator;
 
-import com.databasemanager.domain.model.AccountModel;
+import com.databasemanager.domain.dto.AccountDTO;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -12,7 +12,8 @@ class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, O
 
     @Override
     public boolean isValid(Object obj, ConstraintValidatorContext context) {
-        AccountModel accountModel = (AccountModel) obj;
-        return accountModel.getPassword().equals(accountModel.getMatchingPassword());
+        AccountDTO accountDTO = (AccountDTO) obj;
+        String password = accountDTO.getPassword();
+        return password != null && password.equals(accountDTO.getMatchingPassword());
     }
 }

@@ -17,6 +17,6 @@ public class AuthenticationConfiguration extends GlobalAuthenticationConfigurerA
     public void init(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(accountService)
-                .passwordEncoder(new BCryptPasswordEncoder());
+                .passwordEncoder(accountService.getPasswordEncoder());
     }
 }

@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <p>
-                        <a href="${spring:mvcUrl('AC#processRegisterNewAccountForm').build()}">Zarejestruj jako nowy użytkownik</a>
+                        <a href="${spring:mvcUrl('AC#accountCreate').build()}">Zarejestruj jako nowy użytkownik</a>
                     </p>
                 </form>        </section>
         </div>

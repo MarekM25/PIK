@@ -1,26 +1,12 @@
 package com.databasemanager.domain.repository;
 
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.NoRepositoryBean;
+
 import java.io.Serializable;
 
-public interface RepositoryBase<Model, ID extends Serializable> {
-    Model save(Model model);
+@NoRepositoryBean
+public interface RepositoryBase<T, ID extends Serializable> extends JpaRepository<T, ID> {
 
-    Iterable<Model> save(Iterable<Model> models);
-
-    Model findOne(ID id);
-
-    boolean exists(ID id);
-
-    Iterable<Model> findAll();
-
-    long count();
-
-    void delete(ID id);
-
-    void delete(Model model);
-
-    void delete(Iterable<Model> models);
-
-    void deleteAll();
 }
