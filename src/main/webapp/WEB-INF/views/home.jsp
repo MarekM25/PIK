@@ -13,7 +13,7 @@
     <link rel='stylesheet' href='styles/styles.css'>
 </head>
 <body>
-<%@include file="/WEB-INF/layout/navbar.jspx" %>
+<%@include file="/WEB-INF/layout/navbar.jsp" %>
 <div class="container body-content">
 
 

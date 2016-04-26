@@ -9,7 +9,7 @@
     <link rel='stylesheet' href='../styles/styles.css'>
 </head>
 <body>
-<%@include file="/WEB-INF/layout/navbar.jspx" %>
+<%@include file="/WEB-INF/layout/navbar.jsp" %>
 <div class="container body-content">
     <h2>Rejestracja</h2>
     <form:form action="${spring:mvcUrl('AC#accountCreate').build()}" modelAttribute="accountDTO" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden"/>
@@ -38,7 +38,6 @@
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <form:errors path="*" cssClass="alert alert-danger" element="div"/>
                 <input type="submit" class="btn btn-default" value="Zarejestruj" />
             </div>
         </div>
