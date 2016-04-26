@@ -1,15 +1,16 @@
 package com.databasemanager.web.controller;
 
 import com.databasemanager.domain.dto.AccountDTO;
+import com.databasemanager.domain.exception.UsernameNotAvailableException;
 import com.databasemanager.domain.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -30,11 +31,16 @@ public class AccountController extends ControllerBase {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String accountCreatePost(@ModelAttribute @Valid AccountDTO accountDTO, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "/account/create";
         }
 
-        accountService.createAccount(accountDTO);
+        try {
+            accountService.createAccount(accountDTO);
+        } catch (UsernameNotAvailableException usernameException) {
+            result.addError(new FieldError("username", "username", usernameException.getMessage()));
+            return "/account/create";
+        }
         return "redirect:/home";
     }
 }

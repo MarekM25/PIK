@@ -1,6 +1,7 @@
 package com.databasemanager.domain.service;
 
 import com.databasemanager.domain.dto.AccountDTO;
+import com.databasemanager.domain.exception.UsernameNotAvailableException;
 import com.databasemanager.domain.model.Account;
 import com.databasemanager.domain.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,10 @@ public class AccountServiceImpl extends EntityServiceBase<Account, AccountDTO> i
     @Override
     @Transactional
     public AccountDTO createAccount(AccountDTO accountDTO) {
-        //TODO Check if can add account (for example check if username is available)
+        String username = accountDTO.getUsername();
+        if (!isUsernameAvailable(username)) {
+            throw new UsernameNotAvailableException(username);
+        }
         Account account = this.convertToEntity(accountDTO);
         account = accountRepository.save(account);
         return this.convertToDTO(account);
