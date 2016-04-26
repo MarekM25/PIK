@@ -7,7 +7,7 @@
 </head>
 <body>
 <!--TODO Change account/logout -->
-<form action="<spring:url value="/"/>" method="post">
+<form action="<spring:url value="logout"/>" method="post">
     <input type="submit" value="Wyloguj"/>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
