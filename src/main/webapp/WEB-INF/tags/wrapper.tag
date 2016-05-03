@@ -9,7 +9,7 @@
 
     <jsp:doBody/>
 
-<%@include file="/WEB-INF/layout/footer.jsp" %>
+<%@include file="/WEB-INF/layout/footer.jspx" %>
 </div>
 
 </body>
