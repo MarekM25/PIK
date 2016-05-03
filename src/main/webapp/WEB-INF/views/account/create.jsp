@@ -2,15 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<html>
-<head>
-    <title>Rejestracja</title>
-    <link rel='stylesheet' href='../webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='../styles/styles.css'>
-</head>
-<body>
-<%@include file="/WEB-INF/layout/navbar.jsp" %>
-<div class="container body-content">
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<t:wrapper>
     <h2>Rejestracja</h2>
     <form:form action="${spring:mvcUrl('AC#accountCreate').build()}" modelAttribute="accountDTO" class="form-horizontal" method="post" role="form"><input name="__RequestVerificationToken" type="hidden"/>
         <h4>Utwórz nowe konto.</h4>
@@ -43,10 +36,4 @@
             </div>
         </div>
     </form:form>
-
-    <%@include file="/WEB-INF/layout/footer.jspx" %>
-</div>
-    <script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+</t:wrapper>
