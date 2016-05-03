@@ -32,6 +32,7 @@ public class AccountController extends ControllerBase {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String accountCreatePost(@ModelAttribute @Valid AccountDTO accountDTO, BindingResult result) {
         if (result.hasErrors()) {
+            accountDTO.resetPasswords();
             return "/account/create";
         }
 
@@ -39,6 +40,7 @@ public class AccountController extends ControllerBase {
             accountService.createAccount(accountDTO);
         } catch (UsernameNotAvailableException usernameException) {
             result.addError(new FieldError("username", "username", usernameException.getMessage()));
+            accountDTO.resetPasswords();
             return "/account/create";
         }
         return "redirect:/home";

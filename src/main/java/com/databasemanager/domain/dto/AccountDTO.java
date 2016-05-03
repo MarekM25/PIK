@@ -37,6 +37,11 @@ public class AccountDTO {
         this.matchingPassword = matchingPassword;
     }
 
+    public void resetPasswords(){
+        this.password=null;
+        this.matchingPassword=null;
+    }
+
     @Override
     public boolean equals(Object other){
         if (other == null) return false;
