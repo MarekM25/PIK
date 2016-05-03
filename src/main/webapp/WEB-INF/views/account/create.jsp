@@ -26,14 +26,14 @@
         <div class="form-group">
             <label class="col-md-2 control-label" for="password">Hasło</label>
             <div class="col-md-5">
-                <form:input class="form-control" data-val="true" data-val-length="The Password must be at least 6 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="password" name="password" path="password" type="password" />
+                <form:password class="form-control" data-val="true" data-val-length="The Password must be at least 6 characters long." data-val-length-max="100" data-val-length-min="6" data-val-required="The Password field is required." id="password" name="password" path="password"/>
                 <form:errors path="password" cssClass="text-danger"/>
             </div>
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label" for="matchingPassword">Potwierdź hasło</label>
             <div class="col-md-5">
-                <form:input class="form-control" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="matchingPassword" name="matchingPassword" path="matchingPassword" type="password" />
+                <form:password class="form-control" data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" id="matchingPassword" name="matchingPassword" path="matchingPassword"/>
                 <form:errors object-error="accountDTO" cssClass="text-danger"/>
             </div>
         </div>
