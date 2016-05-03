@@ -1,23 +1,9 @@
-<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Database Manager</title>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
-
-    <link rel='stylesheet' href='styles/styles.css'>
-</head>
-<body>
-<%@include file="/WEB-INF/layout/navbar.jsp" %>
-<div class="container body-content">
-
-
-
+<t:wrapper>
     <h2>Logowanie</h2>
     <div class="row">
         <div class="col-md-8">
@@ -76,11 +62,4 @@
             <p style="color:red">Zostałeś wylogowany.</p>
         </div>
     </c:if>
-
-
-    <%@include file="/WEB-INF/layout/footer.jspx" %>
-</div>
-<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+</t:wrapper>
