@@ -13,16 +13,19 @@ public class SpringSecurityWebConfiguration extends WebSecurityConfigurerAdapter
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/webjars/**","/account/create","/","/styles/**").permitAll()
+                    .antMatchers("/webjars/**","/styles/**").permitAll()
+                    .antMatchers("/account/create","/").anonymous()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
                     .loginPage("/")
                     .defaultSuccessUrl("/account/welcome",true)
-                    .permitAll()
                     .and()
                 .logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/account/logout"))
-                    .logoutSuccessUrl("/?logout");
+                    .logoutSuccessUrl("/?logout")
+                    .and()
+                .exceptionHandling()
+                    .accessDeniedHandler(new AuthenticatedAccessDeniedHandler());
     }
 }
