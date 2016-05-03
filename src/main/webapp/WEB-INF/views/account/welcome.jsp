@@ -4,10 +4,6 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
-<t:wrapper>
-<form action="<spring:url value="logout"/>" method="post">
-    <input type="submit" value="Wyloguj"/>
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-</form>
+<t:userWrapper>
 <h3>Witamy, <sec:authentication property="principal.username"/>!</h3>
-</t:wrapper>
+</t:userWrapper>

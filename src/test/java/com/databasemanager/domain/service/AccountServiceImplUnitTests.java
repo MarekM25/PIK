@@ -104,7 +104,4 @@ public class AccountServiceImplUnitTests {
         Assert.assertNull("User with given username does not exist.", this.accountService.loadUserByUsername("testUser"));
     }
 
-    @Test
-    public void testConvertToEntity() {
-    }
 }

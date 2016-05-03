@@ -4,12 +4,11 @@
 <html>
 <%@include file="/WEB-INF/layout/header.jsp" %>
 <body>
-<%@include file="/WEB-INF/layout/navbar.jsp" %>
+<%@include file="/WEB-INF/layout/userNavbar.jsp" %>
 <div class="container body-content">
-
     <jsp:doBody/>
 
-<%@include file="/WEB-INF/layout/footer.jsp" %>
+    <%@include file="/WEB-INF/layout/footer.jsp" %>
 </div>
 
 </body>
