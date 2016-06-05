@@ -15,8 +15,8 @@ public class HelloDatabaseManagerTest
     {
         WebDriver driver = new HtmlUnitDriver();
 
-        driver.navigate().to("http://seleniumsimplified.com");
-        Assert.assertTrue("title should start with Selenium Simplified",driver.getTitle().startsWith("Selenium Simplified"));
+        driver.navigate().to("http://pik02.ii.pw.edu.pl:8080/DatabaseManager/");
+        Assert.assertTrue("title should start with Selenium Simplified",driver.getTitle().equals("Database Manager"));
 
         driver.close();
         driver.quit();

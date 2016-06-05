@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 
 public class HelloSeleniumTest
@@ -13,7 +14,7 @@ public class HelloSeleniumTest
     @Test
     public void startWebDriver()
     {
-        WebDriver driver = new FirefoxDriver();
+        WebDriver driver = new HtmlUnitDriver();
 
         driver.navigate().to("http://seleniumsimplified.com");
         Assert.assertTrue("title should start with Selenium Simplified",driver.getTitle().startsWith("Selenium Simplified"));
