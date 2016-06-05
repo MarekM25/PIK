@@ -1,12 +1,12 @@
 package com.databasemanager.web.controller;
 
+import com.databasemanager.domain.dto.QueryResultDTO;
 import com.databasemanager.domain.service.QueryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
-import java.util.List;
 
 @RestController
 @RequestMapping("/query")
@@ -16,19 +16,16 @@ public class QueryController {
     private QueryService queryService;
 
     @RequestMapping(value = "/select")
-    public List<String[]> executeQuery() {
+    public QueryResultDTO executeQuery() {
         try {
-            List<String[]> results= queryService.executeSelectQuery("select * from account");
-            for (String[] row : results) {
-                for (String tuple : row) {
-                    System.out.print(tuple + " | ");
-                }
-                System.out.println();
-            }
-            return results;
+            QueryResultDTO queryResultDTO = queryService.executeQuery("INSERT INTO employee VALUES (7,'dupa')");
+            queryResultDTO.setSuccessful(true);
+            return queryResultDTO;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            QueryResultDTO queryResultDTO = new QueryResultDTO();
+            queryResultDTO.setSuccessful(false);
+            queryResultDTO.setErrorMessage(e.getMessage());
+            return queryResultDTO;
         }
-        return null;
     }
 }

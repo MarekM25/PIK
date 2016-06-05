@@ -1,5 +1,6 @@
 package com.databasemanager.domain.service;
 
+import com.databasemanager.domain.dto.QueryResultDTO;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
@@ -16,21 +17,22 @@ public class QueryServiceImpl implements QueryService {
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/databasemanager", connectionProperties);
     }
 
-    public ArrayList<String[]> executeSelectQuery(String query) throws SQLException {
+    public QueryResultDTO executeQuery(String query) throws SQLException {
+        QueryResultDTO queryResultDTO = new QueryResultDTO();
         Connection connection = this.createConnection();
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-        return parseQueryResultSet(resultSet);
+        if (statement.execute(query)) {
+            ResultSet resultSet = statement.executeQuery(query);
+            queryResultDTO.setSelectQuery(true);
+            queryResultDTO.setColumnsNames(getColumnNames(resultSet));
+            queryResultDTO.setRows(getResultRows(resultSet));
+        } else {
+            queryResultDTO.setSelectQuery(false);
+        }
+        return queryResultDTO;
     }
 
-    private ArrayList<String[]> parseQueryResultSet(ResultSet resultSet) throws SQLException{
-        ArrayList<String[]> results = new ArrayList<>();
-        results.add(getColumnNames(resultSet));
-        results.addAll(getResultRows(resultSet));
-        return results;
-    }
-
-    private String[] getColumnNames(ResultSet resultSet) throws SQLException{
+    private String[] getColumnNames(ResultSet resultSet) throws SQLException {
         ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
         int columnsNumber = resultSetMetaData.getColumnCount();
         String[] columnsNames = new String[columnsNumber];
@@ -39,8 +41,8 @@ public class QueryServiceImpl implements QueryService {
         return columnsNames;
     }
 
-    private ArrayList<String[]> getResultRows(ResultSet resultSet) throws SQLException{
-        ArrayList<String[]> results= new ArrayList<>();
+    private ArrayList<String[]> getResultRows(ResultSet resultSet) throws SQLException {
+        ArrayList<String[]> results = new ArrayList<>();
         ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
         int columnsNumber = resultSetMetaData.getColumnCount();
         while (resultSet.next()) {
