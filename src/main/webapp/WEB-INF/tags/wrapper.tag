@@ -2,7 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+<head>
 <%@include file="/WEB-INF/layout/header.jsp" %>
+</head>
 <body>
 <%@include file="/WEB-INF/layout/navbar.jsp" %>
 <div class="container body-content">

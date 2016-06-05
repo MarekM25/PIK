@@ -15,4 +15,25 @@
         <button type="button" class="btn btn-info">Wykonaj zapytanie</button>
     </div>
     </div>
+    <script>
+        window.onload = function() {
+            var mime = 'text/x-mariadb';
+            // get mime type
+            if (window.location.href.indexOf('mime=') > -1) {
+                mime = 'text/x-sql'
+            }
+            window.editor = CodeMirror.fromTextArea(document.getElementById('query'), {
+                mode: mime,
+                indentWithTabs: true,
+                smartIndent: true,
+                lineNumbers: true,
+                matchBrackets : true,
+                extraKeys: {"Ctrl-Space": "autocomplete"},
+                hintOptions: {tables: {
+                    users: {name: null, score: null, birthDate: null},
+                    countries: {name: null, population: null, size: null}
+                }}
+            });
+        };
+    </script>
 </t:userWrapper>
