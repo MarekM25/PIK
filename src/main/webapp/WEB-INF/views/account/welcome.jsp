@@ -9,10 +9,11 @@
     <div class="row">
     <div class="col-md-12">
         </br>
+        {{test}}
         <label for="query">Wpisz swoje zapytanie</label>
-        <textarea id="query" class="form-control" rows="8" id="query"></textarea>
+        <textarea id="query" ng-model="queryText" class="form-control" rows="8" id="query"></textarea>
         </br>
-        <button type="button" class="btn btn-info">Wykonaj zapytanie</button>
+        <button type="button" class="btn btn-info" ng-click="execute()">Wykonaj zapytanie</button>
     </div>
     </div>
     <script>
