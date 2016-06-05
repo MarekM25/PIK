@@ -6,4 +6,13 @@
 
 <t:userWrapper>
 <h3>Witamy, <sec:authentication property="principal.username"/>!</h3>
+    <div class="row">
+    <div class="col-md-12">
+        </br>
+        <label for="query">Wpisz swoje zapytanie</label>
+        <textarea id="query" class="form-control" rows="8" id="query"></textarea>
+        </br>
+        <button type="button" class="btn btn-info">Wykonaj zapytanie</button>
+    </div>
+    </div>
 </t:userWrapper>
