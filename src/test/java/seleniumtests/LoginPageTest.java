@@ -12,30 +12,28 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 /**
  * Created by Marek on 05.06.2016.
  */
-public class RegisterPageTest
+public class LoginPageTest
 {
-    private String registerPageUrl = "http://pik02.ii.pw.edu.pl:8080/DatabaseManager/account/create";
+    private String loginPageUrl = "http://pik02.ii.pw.edu.pl:8080/DatabaseManager/";
     private WebDriver driver = new HtmlUnitDriver();
 
     @Before
     public void setup() {
-        driver.navigate().to(registerPageUrl);
+        driver.navigate().to(loginPageUrl);
     }
 
     @Test
-    public void hasRegisterPage()
+    public void hasLoginPage()
     {
         Assert.assertTrue("title should be DatabaseManager",driver.getTitle().equals("Database Manager"));
     }
 
 
-
     @Test
-    public void hasRegisterFields()
+    public void hasLoginFields()
     {
         driver.findElement(By.id("username"));
         driver.findElement(By.id("password"));
-        driver.findElement(By.id("matchingPassword"));
     }
 
     @After
@@ -44,5 +42,4 @@ public class RegisterPageTest
         driver.close();
         driver.quit();
     }
-
 }
