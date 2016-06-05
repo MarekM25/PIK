@@ -15,6 +15,28 @@
         </br>
         <button type="button" class="btn btn-info" ng-click="execute()">Wykonaj zapytanie</button>
     </div>
+        <div ng-if="queryResult.successful == true">
+            <div ng-if="queryResult.selectQuery == false">
+                bla bla
+            </div>
+            <div ng-if="queryResult.selectQuery == true">
+                bla
+
+                                    <table>
+                   <tr ng-repeat="column in queryResult.columnsNames">
+                       <td>{{column}}</td>
+                                        </tr>
+                                    </table>
+
+
+            </div>
+        </div>
+
+        <div ng-if="queryResult.successful == false">
+           {{queryResult.errorMessage}}
+        </div>
+
+
     </div>
     <script>
         window.onload = function() {

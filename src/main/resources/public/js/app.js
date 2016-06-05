@@ -11,10 +11,11 @@ app.controller("AppCtrl",function($scope,$http) {
     $scope.execute= function () {
         $http({
             url: '../query/select',
-            method: "POST",
+            method: "GET",
             data: { 'message' : $scope.queryText }
         })
             .then(function(response) {
+                    console.log('sukces')
                     $scope.queryResult = response.data;
                     console.log($scope.queryResult);
                 },
