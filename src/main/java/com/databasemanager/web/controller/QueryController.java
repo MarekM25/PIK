@@ -18,9 +18,8 @@ public class QueryController {
     @Autowired
     private QueryService queryService;
 
-    @RequestMapping(value = "/select", method = RequestMethod.POST)
+    @RequestMapping(value = "/execute", method = RequestMethod.POST)
     public QueryResultDTO executeQuery(@RequestBody QueryDTO queryDTO) {
-        System.out.println("Query: " + queryDTO.getQueryText());
         try {
             QueryResultDTO queryResultDTO = queryService.executeQuery(queryDTO.getQueryText());
             queryResultDTO.setSuccessful(true);

@@ -9,7 +9,7 @@ app.controller("AppCtrl",function($scope,$http) {
     $scope.execute= function () {
         
         $http({
-            url: '../query/select',
+            url: '../query/execute',
             method: "POST",
             data: { 'queryText' : window.editor.getValue() }
         })
