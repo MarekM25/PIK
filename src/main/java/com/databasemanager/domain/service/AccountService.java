@@ -7,6 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public interface AccountService extends UserDetailsService {
     boolean isUsernameAvailable(String username);
 
+    AccountDTO getCurrentlyLoggedInAccount();
+
     AccountDTO createAccount(AccountDTO accountDTO);
 
     PasswordEncoder getPasswordEncoder();
