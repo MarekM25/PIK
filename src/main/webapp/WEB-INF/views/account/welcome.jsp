@@ -21,7 +21,7 @@
     </br>
     <div class="row">
         <div ng-if="queryResult.successful == true">
-            <div ng-if="queryResult.selectQuery == false">
+            <div ng-if="queryResult.selectQuery == false" class="alert-success">
                 <p>Polecenie zostało wykonanie poprawnie</p>
             </div>
             <div ng-if="queryResult.selectQuery == true">
@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-        <div ng-if="queryResult.successful == false">
+        <div ng-if="queryResult.successful == false" class="alert-danger">
             <p>Polecenie niepoprawne!</p>
             <p>Błąd: {{queryResult.errorMessage}}</p>
         </div>
