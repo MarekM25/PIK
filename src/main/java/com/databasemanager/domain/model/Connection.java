@@ -8,9 +8,9 @@ public class Connection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="account_id_fk", referencedColumnName="account_id")
-    private String account;
+    private Account account;
     @Column(nullable = false)
     private String host;
     @Column(nullable = false)
@@ -34,12 +34,12 @@ public class Connection {
         this.id = id;
     }
 
-    public String getAccount()
+    public Account getAccount()
     {
         return this.account;
     }
 
-    public void setAccount(String account)
+    public void setAccount(Account account)
     {
         this.account = account;
     }

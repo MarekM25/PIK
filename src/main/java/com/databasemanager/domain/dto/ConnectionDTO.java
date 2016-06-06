@@ -1,20 +1,28 @@
 package com.databasemanager.domain.dto;
 
 import com.databasemanager.domain.model.DatabaseType;
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.Size;
 
 public class ConnectionDTO {
     private long id;
 
-    private String account;
+    private AccountDTO account;
 
+    @Size(min = 1, max = 255, message = "Host nie może być pusty i może składać się z co najwyżej 255 znaków.")
     private String host;
 
+    @Range(min=1, max=65535, message = "Port musi być liczbą w zakresie 1-65535.")
     private short port;
 
+    @Size(min = 1, max = 255, message = "Nazwa bazy nie może być pusta i może składać się z co najwyżej 255 znaków.")
     private String initialDatabase;
 
+    @Size(min = 1, max = 255, message = "Nazwa użytkownika nie może być pusta i może składać się z co najwyżej 255 znaków.")
     private String username;
 
+    @Size(min = 1, max = 255, message = "Hasło nie może być puste i może składać się z co najwyżej 255 znaków.")
     private String password;
 
     private DatabaseType databaseType;
@@ -27,12 +35,12 @@ public class ConnectionDTO {
         this.id = id;
     }
 
-    public String getAccount()
+    public AccountDTO getAccount()
     {
         return this.account;
     }
 
-    public void setAccount(String account)
+    public void setAccount(AccountDTO account)
     {
         this.account = account;
     }

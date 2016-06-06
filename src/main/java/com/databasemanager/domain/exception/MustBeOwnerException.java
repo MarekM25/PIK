@@ -11,7 +11,7 @@ public class MustBeOwnerException extends RuntimeException
     @Override
     public String getMessage()
     {
-        return "Nie mozna usunac polaczenia stworzonego przez innego uzytkownika";
+        return "Nie mozna usunac polaczenia stworzonego przez innego uzytkownika.";
     }
 }
 

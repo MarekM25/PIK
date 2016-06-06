@@ -3,7 +3,11 @@ package com.databasemanager.domain.service;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
-public abstract class EntityServiceBase<Entity, DTO> {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public abstract class EntityServiceBase<Entity, DTO> implements EntityService<Entity, DTO> {
     private final Mapper mapper;
 
     private final Class<DTO> dtoObjectClass;
@@ -16,11 +20,16 @@ public abstract class EntityServiceBase<Entity, DTO> {
         this.mapper = new DozerBeanMapper();
     }
 
-    Entity convertToEntity(DTO objectDTO) {
+    public Entity convertToEntity(DTO objectDTO) {
         return this.mapper.map(objectDTO, this.entityObjectClass);
     }
 
-    DTO convertToDTO(Entity objectEntity) {
+    public DTO convertToDTO(Entity objectEntity) {
         return this.mapper.map(objectEntity, this.dtoObjectClass);
+    }
+
+    public List<DTO> convertToDTOList(List<Entity> objectEntityList) {
+
+        return objectEntityList.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 }
