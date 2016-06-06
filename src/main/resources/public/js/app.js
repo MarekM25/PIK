@@ -7,10 +7,11 @@ app.controller("AppCtrl",function($scope,$http) {
     var app = this;
     $scope.queryText='';
     $scope.execute= function () {
+        
         $http({
             url: '../query/select',
             method: "POST",
-            data: { 'queryText' : $scope.queryText }
+            data: { 'queryText' : window.editor.getValue() }
         })
             .then(function(response) {
                     $scope.queryResult = response.data;
