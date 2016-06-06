@@ -6,16 +6,14 @@ var app = angular.module("app",[]);
 app.controller("AppCtrl",function($scope,$http) {
     var app = this;
     
-
-
+    
     $scope.execute= function () {
         $http({
             url: '../query/select',
-            method: "GET",
-            data: { 'message' : $scope.queryText }
+            method: "POST",
+            data: { 'queryText' : $scope.queryText }
         })
             .then(function(response) {
-                    console.log('sukces')
                     $scope.queryResult = response.data;
                     console.log($scope.queryResult);
                 },

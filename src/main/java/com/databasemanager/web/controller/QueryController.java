@@ -1,9 +1,12 @@
 package com.databasemanager.web.controller;
 
+import com.databasemanager.domain.dto.QueryDTO;
 import com.databasemanager.domain.dto.QueryResultDTO;
 import com.databasemanager.domain.service.QueryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.SQLException;
@@ -15,8 +18,9 @@ public class QueryController {
     @Autowired
     private QueryService queryService;
 
-    @RequestMapping(value = "/select")
-    public QueryResultDTO executeQuery() {
+    @RequestMapping(value = "/select", method = RequestMethod.POST)
+    public QueryResultDTO executeQuery(@RequestBody QueryDTO queryDTO) {
+        System.out.println("Query: " + queryDTO.getQueryText());
         try {
             QueryResultDTO queryResultDTO = queryService.executeQuery("INSERT INTO employee VALUES (7,'dupa')");
             queryResultDTO.setSuccessful(true);
