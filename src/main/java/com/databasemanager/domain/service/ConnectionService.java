@@ -7,5 +7,5 @@ public interface ConnectionService
 {
     ConnectionDTO createConnection(ConnectionDTO connectionDTO);
 
-    boolean deleteConnection(long id);
+    void deleteConnection(long id);
 }
