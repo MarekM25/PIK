@@ -3,6 +3,8 @@ package com.databasemanager.domain.dto;
 import com.databasemanager.domain.model.DatabaseType;
 
 public class ConnectionDTO {
+    private long id;
+
     private String host;
 
     private short port;
@@ -14,6 +16,14 @@ public class ConnectionDTO {
     private String password;
 
     private DatabaseType databaseType;
+
+    public long getId() {
+        return this.id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getHost()
     {
