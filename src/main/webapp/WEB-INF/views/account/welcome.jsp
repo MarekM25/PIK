@@ -11,19 +11,26 @@
             </br>
             {{test}}
             <label for="query">Wpisz swoje zapytanie</label>
-            <textarea id="query" ng-model="queryText" class="form-control" rows="8" id="query"></textarea>
+            <textarea id="query" ng-model="queryText" class="form-control" rows="8"></textarea>
             </br>
             <button type="button" class="btn btn-info" ng-click="execute()">Wykonaj zapytanie</button>
         </div>
+        </div>
+    </br>
+    </br>
+    </br>
+    <div class="row">
         <div ng-if="queryResult.successful == true">
             <div ng-if="queryResult.selectQuery == false">
                 <p>Polecenie zostało wykonanie poprawnie</p>
             </div>
             <div ng-if="queryResult.selectQuery == true">
-                <table>
+                <table class="table table-hover">
+                    <thead class="thead-inverse" style="background: black; color: white">
                     <tr>
                         <td ng-repeat="column in queryResult.columnsNames"> {{column}} </td>
                     </tr>
+                    </thead>
                     <tr ng-repeat="row in queryResult.rows">
                         <td ng-repeat="tuple in row">
                             {{tuple}}
@@ -32,11 +39,12 @@
                 </table>
             </div>
         </div>
+    </div>
         <div ng-if="queryResult.successful == false">
             <p>Polecenie niepoprawne!</p>
             <p>Błąd: {{queryResult.errorMessage}}</p>
         </div>
-    </div>
+
     <script>
         window.onload = function () {
             var mime = 'text/x-mariadb';
@@ -45,7 +53,6 @@
                 mime = 'text/x-sql'
             }
             window.editor = CodeMirror.fromTextArea(document.getElementById('query'), {
-                ngModel: "queryText",
                 mode: mime,
                 indentWithTabs: true,
                 smartIndent: true,
@@ -58,7 +65,7 @@
                         countries: {name: null, population: null, size: null}
                     }
                 }
-            });
+            })
         };
     </script>
 </t:userWrapper>
