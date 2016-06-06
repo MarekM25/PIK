@@ -14,7 +14,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="<s:url value="logout"/>" style="color:white;"  id="registerLink">Wyloguj</a></li>
+                <li><a href="<s:url value="/account/logout"/>" style="color:white;"  id="registerLink">Wyloguj</a></li>
             </ul>
 
         </div>
