@@ -5,6 +5,8 @@ import com.databasemanager.domain.model.DatabaseType;
 public class ConnectionDTO {
     private long id;
 
+    private String account;
+
     private String host;
 
     private short port;
@@ -23,6 +25,16 @@ public class ConnectionDTO {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getAccount()
+    {
+        return this.account;
+    }
+
+    public void setAccount(String account)
+    {
+        this.account = account;
     }
 
     public String getHost()

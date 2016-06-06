@@ -8,6 +8,9 @@ public class Connection {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @OneToOne
+    @JoinColumn(name="account_id_fk", referencedColumnName="account_id")
+    private String account;
     @Column(nullable = false)
     private String host;
     @Column(nullable = false)
@@ -29,6 +32,16 @@ public class Connection {
     public void setId(long id)
     {
         this.id = id;
+    }
+
+    public String getAccount()
+    {
+        return this.account;
+    }
+
+    public void setAccount(String account)
+    {
+        this.account = account;
     }
 
     public String getHost()
