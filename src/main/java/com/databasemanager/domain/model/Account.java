@@ -8,6 +8,7 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "account_id")
     private long id;
     @Column(nullable = false, unique = true)
     private String username;
