@@ -5,8 +5,7 @@ var app = angular.module("app",[]);
 
 app.controller("AppCtrl",function($scope,$http) {
     var app = this;
-    
-    
+    $scope.queryText='';
     $scope.execute= function () {
         $http({
             url: '../query/select',

@@ -22,7 +22,7 @@ public class QueryController {
     public QueryResultDTO executeQuery(@RequestBody QueryDTO queryDTO) {
         System.out.println("Query: " + queryDTO.getQueryText());
         try {
-            QueryResultDTO queryResultDTO = queryService.executeQuery("INSERT INTO employee VALUES (7,'dupa')");
+            QueryResultDTO queryResultDTO = queryService.executeQuery(queryDTO.getQueryText());
             queryResultDTO.setSuccessful(true);
             return queryResultDTO;
         } catch (SQLException e) {
