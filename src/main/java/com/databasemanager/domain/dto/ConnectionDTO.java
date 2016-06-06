@@ -1,21 +1,23 @@
 package com.databasemanager.domain.dto;
 
-/**
- * Created by Pawel Wiszenko on 6/6/16.
- */
+import com.databasemanager.domain.model.DatabaseType;
 
 public class ConnectionDTO {
     private String host;
+
     private short port;
-    private String database;
-    @Size(min = 5, max = 25, message = "Login musi mieć co najmniej 5 i co najwyżej 25 znaków.")
+
+    private String initialDatabase;
+
     private String username;
-    @Size(min = 5, max = 25, message = "Hasło musi mieć co najmniej 5 i co najwyżej 25 znaków.")
+
     private String password;
+
+    private DatabaseType databaseType;
 
     public String getHost()
     {
-        return host;
+        return this.host;
     }
 
     public void setHost(String host)
@@ -25,7 +27,7 @@ public class ConnectionDTO {
 
     public short getPort()
     {
-        return port;
+        return this.port;
     }
 
     public void setPort(short port)
@@ -33,19 +35,19 @@ public class ConnectionDTO {
         this.port = port;
     }
 
-    public String getdatabase()
+    public String getInitialDatabase()
     {
-        return database;
+        return this.initialDatabase;
     }
 
-    public void setDatabase(String database)
+    public void setInitialDatabase(String initialDatabase)
     {
-        this.database = database;
+        this.initialDatabase = initialDatabase;
     }
 
     public String getUsername()
     {
-        return username;
+        return this.username;
     }
 
     public void setUsername(String username)
@@ -55,11 +57,19 @@ public class ConnectionDTO {
 
     public String getPassword()
     {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password)
     {
         this.password = password;
+    }
+
+    public DatabaseType getDatabaseType() {
+        return this.databaseType;
+    }
+
+    public void setDatabaseType(DatabaseType databaseType) {
+        this.databaseType = databaseType;
     }
 }
