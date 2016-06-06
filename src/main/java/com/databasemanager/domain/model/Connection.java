@@ -1,5 +1,7 @@
 package com.databasemanager.domain.model;
 
+import javax.persistence.*;
+
 @Entity
 public class Connection {
 
