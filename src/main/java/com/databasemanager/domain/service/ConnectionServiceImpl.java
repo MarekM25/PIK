@@ -28,14 +28,6 @@ public class ConnectionServiceImpl extends EntityServiceBase<Connection, Connect
         connection = connectionRepository.save(connection);
         return this.convertToDTO(connection);
     }
-
-
-    @Override
-    @Transactional
-    public void deleteConnection(long id)
-    {
-        //TODO
-    }
 }
 
 
