@@ -7,6 +7,8 @@ import com.databasemanager.domain.model.Connection;
 public interface ConnectionRepository extends RepositoryBase<Connection, Long>
 {
     Connection findByUsername(String username);
+
+    void deleteById(Long id);
 }
 
 
