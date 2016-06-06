@@ -41,6 +41,13 @@ public class AccountServiceImpl extends EntityServiceBase<Account, AccountDTO> i
     }
 
     @Override
+    public AccountDTO getCurrentlyLoggedInAccount()
+    {
+        // TODO get current account
+        return null;
+    }
+
+    @Override
     @Transactional
     public AccountDTO createAccount(AccountDTO accountDTO) {
         String username = accountDTO.getUsername();
