@@ -7,16 +7,15 @@
 <t:userWrapper>
     <h3>Witamy, <sec:authentication property="principal.username"/>!</h3>
     <div class="row">
-        <div class="col-md-12">
-            </br>
-            {{test}}
+        <div class="col-md-12 query-result">
             <label for="query">Wpisz swoje zapytanie</label>
             <textarea id="query" ng-model="queryText" class="form-control" rows="8" id="query"></textarea>
-            </br>
+        </div>
+        <div class="col-md-12 query-result">
             <button type="button" class="btn btn-info" ng-click="execute()">Wykonaj zapytanie</button>
         </div>
         <div ng-if="queryResult.successful == true">
-            <div ng-if="queryResult.selectQuery == false">
+            <div ng-if="queryResult.selectQuery == false" class="col-md-12 alert-success">
                 <p>Polecenie zostało wykonanie poprawnie</p>
             </div>
             <div ng-if="queryResult.selectQuery == true">
@@ -32,7 +31,7 @@
                 </table>
             </div>
         </div>
-        <div ng-if="queryResult.successful == false">
+        <div ng-if="queryResult.successful == false" class="col-md-12 alert-danger query-result">
             <p>Polecenie niepoprawne!</p>
             <p>Błąd: {{queryResult.errorMessage}}</p>
         </div>
