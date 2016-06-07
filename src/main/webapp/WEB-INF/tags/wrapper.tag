@@ -8,7 +8,12 @@
 <body>
 <%@include file="/WEB-INF/layout/navbar.jsp" %>
 <div class="container body-content">
-
+    <c:if test="${ERROR_MESSAGE != null}">
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Error!</strong> ${ERROR_MESSAGE}
+        </div>
+    </c:if>
     <jsp:doBody/>
 
 <%@include file="/WEB-INF/layout/footer.jspx" %>

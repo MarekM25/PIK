@@ -7,6 +7,7 @@ import com.databasemanager.domain.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -41,6 +42,13 @@ public class AccountServiceImpl extends EntityServiceBase<Account, AccountDTO> i
     }
 
     @Override
+    public Account getCurrentlyLoggedInAccount()
+    {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return this.accountRepository.findByUsername(username);
+    }
+
+    @Override
     @Transactional
     public AccountDTO createAccount(AccountDTO accountDTO) {
         String username = accountDTO.getUsername();
@@ -72,7 +80,7 @@ public class AccountServiceImpl extends EntityServiceBase<Account, AccountDTO> i
     }
 
     @Override
-    protected Account convertToEntity(AccountDTO accountDTO) {
+    public Account convertToEntity(AccountDTO accountDTO) {
         Account account = super.convertToEntity(accountDTO);
         account.setPasswordHash(this.HashPassword(accountDTO.getPassword()));
         return account;
