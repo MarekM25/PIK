@@ -14,7 +14,7 @@ public class QueryServiceImpl implements QueryService {
         Properties connectionProperties = new Properties();
         connectionProperties.put("user", "root");
         connectionProperties.put("password", "qwerty");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/test", connectionProperties);
+        return DriverManager.getConnection("jdbc:mysql://localhost:3307/test", connectionProperties);
     }
 
     public QueryResultDTO executeQuery(String query) throws SQLException {
