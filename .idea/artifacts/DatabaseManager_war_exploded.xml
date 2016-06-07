@@ -7,6 +7,8 @@
           <element id="module-output" name="DatabaseManager" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.webjars:angularjs:1.5.5" />
+          <element id="library" level="project" name="Maven: org.webjars:codemirror:5.5" />
           <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-firefox-driver:2.53.0" />
           <element id="library" level="project" name="Maven: org.seleniumhq.selenium:selenium-remote-driver:2.53.0" />
           <element id="library" level="project" name="Maven: cglib:cglib-nodep:2.1_3" />
