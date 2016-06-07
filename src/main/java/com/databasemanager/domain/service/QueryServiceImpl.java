@@ -13,8 +13,8 @@ public class QueryServiceImpl implements QueryService {
     public Connection createConnection() throws SQLException {
         Properties connectionProperties = new Properties();
         connectionProperties.put("user", "root");
-        connectionProperties.put("password", "6e43c514dd");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/databasemanager", connectionProperties);
+        connectionProperties.put("password", "qwerty");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/test", connectionProperties);
     }
 
     public QueryResultDTO executeQuery(String query) throws SQLException {
