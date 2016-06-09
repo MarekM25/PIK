@@ -3,6 +3,7 @@ package com.databasemanager.domain.service;
 import com.databasemanager.domain.dto.ConnectionDTO;
 import com.databasemanager.domain.dto.QueryDTO;
 import com.databasemanager.domain.dto.QueryResultDTO;
+import com.databasemanager.domain.model.DatabaseType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class QueryServiceImpl implements QueryService {
     @Autowired
     private ConnectionService connectionService;
 
-    public Connection createConnection(ConnectionDTO connectionDTO) throws SQLException {
+    public Connection getConnection(ConnectionDTO connectionDTO) throws SQLException {
         Properties connectionProperties = new Properties();
         connectionProperties.put("user",connectionDTO.getUsername());
         connectionProperties.put("password",connectionDTO.getPassword());
@@ -25,6 +26,20 @@ public class QueryServiceImpl implements QueryService {
     }
 
     private String createDatabaseURL(ConnectionDTO connectionDTO){
+        DatabaseType databaseType=connectionDTO.getDatabaseType();
+        if(databaseType.equals(DatabaseType.MySQL))
+            return this.createMySQLDatabaseUrl(connectionDTO);
+        else if(databaseType.equals(DatabaseType.Oracle))
+            return this.createOracleDatabaseUrl(connectionDTO);
+        else if(databaseType.equals(DatabaseType.PostgreSQL))
+            return this.createPostgreSQLUrl(connectionDTO);
+        else if(databaseType.equals(DatabaseType.SQLServer))
+            return this.createSQLServerUrl(connectionDTO);
+
+        return null;
+    }
+
+    private String createMySQLDatabaseUrl(ConnectionDTO connectionDTO){
         StringBuilder databaseURL= new StringBuilder();
         databaseURL.append("jdbc:mysql://");
         databaseURL.append(connectionDTO.getHost());
@@ -35,10 +50,47 @@ public class QueryServiceImpl implements QueryService {
         return databaseURL.toString();
     }
 
+    private String createOracleDatabaseUrl(ConnectionDTO connectionDTO){
+        StringBuilder databaseURL= new StringBuilder();
+        databaseURL.append("jdbc:oracle:thin:");
+        databaseURL.append(connectionDTO.getUsername());
+        databaseURL.append("/");
+        databaseURL.append(connectionDTO.getPassword());
+        databaseURL.append("@");
+        databaseURL.append(connectionDTO.getHost());
+        databaseURL.append(":");
+        databaseURL.append(connectionDTO.getPort());
+        databaseURL.append(":");
+        databaseURL.append(connectionDTO.getInitialDatabase());
+        return databaseURL.toString();
+    }
+
+    private String createPostgreSQLUrl(ConnectionDTO connectionDTO){
+        StringBuilder databaseURL= new StringBuilder();
+        databaseURL.append("jdbc:postgresql://");
+        databaseURL.append(connectionDTO.getHost());
+        databaseURL.append(":");
+        databaseURL.append(connectionDTO.getPort());
+        databaseURL.append("/");
+        databaseURL.append(connectionDTO.getInitialDatabase());
+        return databaseURL.toString();
+    }
+
+    private String createSQLServerUrl(ConnectionDTO connectionDTO){
+        StringBuilder databaseURL= new StringBuilder();
+        databaseURL.append("jdbc:sqlserver://");
+        databaseURL.append(connectionDTO.getHost());
+        databaseURL.append(";");
+        databaseURL.append(connectionDTO.getUsername());
+        databaseURL.append(";");
+        databaseURL.append(connectionDTO.getPassword());
+        return databaseURL.toString();
+    }
+
     public QueryResultDTO executeQuery(QueryDTO queryDTO) throws SQLException {
         QueryResultDTO queryResultDTO = new QueryResultDTO();
         ConnectionDTO connectionDTO=connectionService.findConnectionById(queryDTO.getConnectionId());
-        Connection connection = this.createConnection(connectionDTO);
+        Connection connection = this.getConnection(connectionDTO);
         Statement statement = connection.createStatement();
         String query=queryDTO.getQueryText();
         if (statement.execute(query)) {

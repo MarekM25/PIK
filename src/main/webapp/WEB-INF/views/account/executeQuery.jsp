@@ -13,17 +13,21 @@
             <label for="query">Wybierz bazę danych</label>
         </div>
         <div class="col-md-6">
-            <form:select path="connectionList" ng-model="connectionId">
-                <form:options items="${connectionList}" itemValue="id" itemLabel="initialDatabase"/>
-            </form:select>
+            <form:select path="connectionList" items="${connectionList}" itemValue="id" itemLabel="initialDatabase" ng-model="connectionId"/>
         </div>
         <div class="col-md-12">
             </br>
-            {{test}}
-            <label for="query">Wpisz swoje zapytanie</label>
+            <label for="query">Wpisz polecenie do bazy</label>
             <textarea id="query" ng-model="queryText" class="form-control" rows="8"></textarea>
             </br>
-            <button type="button" class="btn btn-info" ng-click="execute()">Wykonaj zapytanie</button>
+            <c:if test="${empty connectionList}">
+                <div class="alert-danger">
+                    <p>Aby wykonać skrypt najpierw dodaj połączenie</p>
+                </div>
+            </c:if>
+            <c:if test="${not empty connectionList}">
+                <button type="button" class="btn btn-info" ng-click="execute()">Wykonaj polecenie</button>
+            </c:if>
         </div>
     </div>
     </br>

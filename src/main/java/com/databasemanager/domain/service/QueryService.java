@@ -10,5 +10,5 @@ import java.sql.SQLException;
 public interface QueryService {
     QueryResultDTO executeQuery(QueryDTO queryDTO) throws SQLException;
 
-    Connection createConnection(ConnectionDTO connectionDTO) throws SQLException;
+    Connection getConnection(ConnectionDTO connectionDTO) throws SQLException;
 }
