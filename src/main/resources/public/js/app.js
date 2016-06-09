@@ -5,14 +5,14 @@ var app = angular.module("app",[]);
 
 app.controller("AppCtrl",function($scope,$http) {
     var app = this;
-    $scope.queryText='';
+    $scope.statementText='';
     $scope.execute= function () {
         $http({
-            url: '../query/execute',
+            url: '../statement/execute',
             method: "POST",
             data: { 
                 'connectionId': $scope.connectionId,
-                'queryText' : window.editor.getValue() 
+                "statementText" : window.editor.getValue() 
             }
         })
             .then(function(response) {

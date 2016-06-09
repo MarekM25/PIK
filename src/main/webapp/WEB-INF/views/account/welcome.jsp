@@ -6,6 +6,4 @@
 
 <t:userWrapper>
     <h3>Witamy, <sec:authentication property="principal.username"/>!</h3>
-    <br>
-    <a href="<spring:url value="/query/execute"/>">Wykonaj zapytanie do bazy</a>
 </t:userWrapper>

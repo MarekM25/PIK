@@ -9,6 +9,9 @@
             <ul class="nav navbar-nav">
                 <li><a href="${spring:mvcUrl('connections').build()}">Połączenia</a></li>
             </ul>
+            <ul class="nav navbar-nav">
+                <li><a href="<s:url value="/statement/execute"/>">Wykonaj skrypt</a></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<s:url value="/account/logout"/>" style="color:white;">Wyloguj</a></li>
             </ul>
