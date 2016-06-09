@@ -11,6 +11,7 @@ import java.util.List;
 public interface ConnectionRepository extends RepositoryBase<Connection, Long>
 {
     List<Connection> findAllByAccount(Account account);
+    Connection findById(long id);
 }
 
 

@@ -26,7 +26,6 @@ public class ConnectionServiceImpl extends EntityServiceBase<Connection, Connect
         this.connectionRepository = connectionRepository;
     }
 
-
     @Override
     @Transactional
     public ConnectionDTO createConnection(ConnectionDTO connectionDTO)
@@ -46,6 +45,11 @@ public class ConnectionServiceImpl extends EntityServiceBase<Connection, Connect
         return this.convertToDTOList(connectionList);
     }
 
+    @Override
+    public ConnectionDTO findConnectionById(long id){
+        Connection connection=this.connectionRepository.findById(id);
+        return  this.convertToDTO(connection);
+    }
 
     @Override
     @Transactional

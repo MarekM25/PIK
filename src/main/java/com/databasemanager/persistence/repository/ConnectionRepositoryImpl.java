@@ -1,5 +1,6 @@
 package com.databasemanager.persistence.repository;
 
+import com.databasemanager.domain.dto.ConnectionDTO;
 import com.databasemanager.domain.model.Account;
 import com.databasemanager.domain.model.Connection;
 import com.databasemanager.domain.repository.ConnectionRepository;
@@ -31,5 +32,20 @@ public class ConnectionRepositoryImpl extends RepositoryBaseImpl<Connection, Lon
         cq.select(connectionRoot);
 
         return this.entityManager.createQuery(cq).getResultList();
+    }
+
+    public Connection findById(long id){
+        CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
+        CriteriaQuery<Connection> cq = builder.createQuery(Connection.class);
+        Root<Connection> connectionRoot = cq.from(Connection.class);
+        cq.where(builder.equal(connectionRoot.get("id"), id));
+        cq.select(connectionRoot);
+
+        List<Connection> resultList = this.entityManager.createQuery(cq).getResultList();
+        if (resultList.size() <= 0) {
+            return null;
+        }
+
+        return resultList.get(0);
     }
 }

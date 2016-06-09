@@ -1,12 +1,14 @@
 package com.databasemanager.domain.service;
 
+import com.databasemanager.domain.dto.ConnectionDTO;
+import com.databasemanager.domain.dto.QueryDTO;
 import com.databasemanager.domain.dto.QueryResultDTO;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public interface QueryService {
-    QueryResultDTO executeQuery(String query) throws SQLException;
+    QueryResultDTO executeQuery(QueryDTO queryDTO) throws SQLException;
 
-    Connection createConnection() throws SQLException;
+    Connection createConnection(ConnectionDTO connectionDTO) throws SQLException;
 }

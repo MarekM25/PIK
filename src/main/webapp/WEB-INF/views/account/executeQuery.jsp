@@ -2,10 +2,21 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <t:userWrapper>
+
     <div class="row">
+        <br>
+        <div class="col-md-2">
+            <label for="query">Wybierz bazę danych</label>
+        </div>
+        <div class="col-md-6">
+            <form:select path="connectionList" ng-model="connectionId">
+                <form:options items="${connectionList}" itemValue="id" itemLabel="initialDatabase"/>
+            </form:select>
+        </div>
         <div class="col-md-12">
             </br>
             {{test}}
@@ -14,7 +25,7 @@
             </br>
             <button type="button" class="btn btn-info" ng-click="execute()">Wykonaj zapytanie</button>
         </div>
-        </div>
+    </div>
     </br>
     </br>
     </br>
@@ -27,7 +38,7 @@
                 <table class="table table-hover">
                     <thead class="thead-inverse" style="background: black; color: white">
                     <tr>
-                        <td ng-repeat="column in queryResult.columnsNames"> {{column}} </td>
+                        <td ng-repeat="column in queryResult.columnsNames"> {{column}}</td>
                     </tr>
                     </thead>
                     <tr ng-repeat="row in queryResult.rows">
@@ -39,10 +50,10 @@
             </div>
         </div>
     </div>
-        <div ng-if="queryResult.successful == false" class="alert-danger">
-            <p>Polecenie niepoprawne!</p>
-            <p>Błąd: {{queryResult.errorMessage}}</p>
-        </div>
+    <div ng-if="queryResult.successful == false" class="alert-danger">
+        <p>Polecenie niepoprawne!</p>
+        <p>Błąd: {{queryResult.errorMessage}}</p>
+    </div>
 
     <script>
         window.onload = function () {

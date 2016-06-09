@@ -1,6 +1,9 @@
 package com.databasemanager.domain.service;
 
+import com.databasemanager.domain.dto.ConnectionDTO;
+import com.databasemanager.domain.dto.QueryDTO;
 import com.databasemanager.domain.dto.QueryResultDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
@@ -10,17 +13,34 @@ import java.util.Properties;
 @Service
 public class QueryServiceImpl implements QueryService {
 
-    public Connection createConnection() throws SQLException {
+    @Autowired
+    private ConnectionService connectionService;
+
+    public Connection createConnection(ConnectionDTO connectionDTO) throws SQLException {
         Properties connectionProperties = new Properties();
-        connectionProperties.put("user", "root");
-        connectionProperties.put("password", "qwerty");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3307/test", connectionProperties);
+        connectionProperties.put("user",connectionDTO.getUsername());
+        connectionProperties.put("password",connectionDTO.getPassword());
+        String databaseURL=this.createDatabaseURL(connectionDTO);
+        return DriverManager.getConnection(databaseURL, connectionProperties);
     }
 
-    public QueryResultDTO executeQuery(String query) throws SQLException {
+    private String createDatabaseURL(ConnectionDTO connectionDTO){
+        StringBuilder databaseURL= new StringBuilder();
+        databaseURL.append("jdbc:mysql://");
+        databaseURL.append(connectionDTO.getHost());
+        databaseURL.append(":");
+        databaseURL.append(connectionDTO.getPort());
+        databaseURL.append("/");
+        databaseURL.append(connectionDTO.getInitialDatabase());
+        return databaseURL.toString();
+    }
+
+    public QueryResultDTO executeQuery(QueryDTO queryDTO) throws SQLException {
         QueryResultDTO queryResultDTO = new QueryResultDTO();
-        Connection connection = this.createConnection();
+        ConnectionDTO connectionDTO=connectionService.findConnectionById(queryDTO.getConnectionId());
+        Connection connection = this.createConnection(connectionDTO);
         Statement statement = connection.createStatement();
+        String query=queryDTO.getQueryText();
         if (statement.execute(query)) {
             ResultSet resultSet = statement.executeQuery(query);
             queryResultDTO.setSelectQuery(true);
@@ -29,6 +49,7 @@ public class QueryServiceImpl implements QueryService {
         } else {
             queryResultDTO.setSelectQuery(false);
         }
+        connection.close();
         return queryResultDTO;
     }
 

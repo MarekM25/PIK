@@ -12,5 +12,7 @@ public interface ConnectionService extends EntityService<Connection, ConnectionD
 
     List<ConnectionDTO> findConnectionsForCurrentAccount();
 
+    ConnectionDTO findConnectionById(long id);
+
     void deleteConnection(long id);
 }
