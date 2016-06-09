@@ -1,9 +1,9 @@
 package com.databasemanager.domain.dto;
 
-public class QueryDTO {
+public class StatementDTO {
 
     private long connectionId;
-    private String queryText;
+    private String statementText;
 
     public long getConnectionId() {
         return connectionId;
@@ -13,11 +13,11 @@ public class QueryDTO {
         this.connectionId = connectionId;
     }
 
-    public String getQueryText() {
-        return queryText;
+    public String getStatementText() {
+        return statementText;
     }
 
-    public void setQueryText(String queryText) {
-        this.queryText = queryText;
+    public void setStatementText(String statementText) {
+        this.statementText = statementText;
     }
 }

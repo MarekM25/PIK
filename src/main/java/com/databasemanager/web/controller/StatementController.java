@@ -1,10 +1,10 @@
 package com.databasemanager.web.controller;
 
 import com.databasemanager.domain.dto.ConnectionDTO;
-import com.databasemanager.domain.dto.QueryDTO;
-import com.databasemanager.domain.dto.QueryResultDTO;
+import com.databasemanager.domain.dto.StatementDTO;
+import com.databasemanager.domain.dto.StatementResultDTO;
 import com.databasemanager.domain.service.ConnectionService;
-import com.databasemanager.domain.service.QueryService;
+import com.databasemanager.domain.service.StatementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,33 +17,33 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/query")
-public class QueryController {
+@RequestMapping("/statement")
+public class StatementController {
 
     @Autowired
-    private QueryService queryService;
+    private StatementService statementService;
 
     @Autowired
     private ConnectionService connectionService;
 
     @RequestMapping("/execute")
-    public String executeQuery(Model model) {
+    public String executeStatement(Model model) {
         List<ConnectionDTO> connectionList = connectionService.findConnectionsForCurrentAccount();
         model.addAttribute("connectionList",connectionList);
-        return "/account/executeQuery";
+        return "/statement/executeStatement";
     }
 
     @RequestMapping(value = "/execute", method = RequestMethod.POST)
-    public @ResponseBody QueryResultDTO executeQuery(@RequestBody QueryDTO queryDTO) {
+    public @ResponseBody StatementResultDTO executeStatement(@RequestBody StatementDTO statementDTO) {
         try {
-            QueryResultDTO queryResultDTO = queryService.executeQuery(queryDTO);
-            queryResultDTO.setSuccessful(true);
-            return queryResultDTO;
+            StatementResultDTO statementResultDTO = statementService.executeStatement(statementDTO);
+            statementResultDTO.setSuccessful(true);
+            return statementResultDTO;
         } catch (SQLException e) {
-            QueryResultDTO queryResultDTO = new QueryResultDTO();
-            queryResultDTO.setSuccessful(false);
-            queryResultDTO.setErrorMessage(e.getMessage());
-            return queryResultDTO;
+            StatementResultDTO statementResultDTO = new StatementResultDTO();
+            statementResultDTO.setSuccessful(false);
+            statementResultDTO.setErrorMessage(e.getMessage());
+            return statementResultDTO;
         }
     }
 }

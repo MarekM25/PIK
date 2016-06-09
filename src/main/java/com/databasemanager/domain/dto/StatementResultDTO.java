@@ -2,7 +2,7 @@ package com.databasemanager.domain.dto;
 
 import java.util.ArrayList;
 
-public class QueryResultDTO {
+public class StatementResultDTO {
     private boolean selectQuery;
     private boolean successful;
     private String errorMessage;
